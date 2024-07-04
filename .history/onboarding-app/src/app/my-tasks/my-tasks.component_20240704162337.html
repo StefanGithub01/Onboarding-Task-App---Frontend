@@ -1,0 +1,19 @@
+<div class = "container">
+    <h2>My Tasks: </h2>
+    <table class = "table">
+        <thead>
+            <tr>
+                <th> Due Date</th>
+                <th> Subject</th>
+                <th> Status </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{ task.dueDate | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ task.subject }}</td>
+                <td>{{ task.status }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
