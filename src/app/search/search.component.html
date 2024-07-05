@@ -1,0 +1,53 @@
+<div class = "search-parameters">
+
+    <div class = "assigned" >
+        <label for="assignedTo" class="bold-label">Assigned To:</label>
+            <select id="assignedTo">
+                <option value="">-- Select User --</option>
+                <option *ngFor="let user of users" [value] = "user.id">{{user.userName}}</option>
+            </select>
+    </div>
+
+    <div class = "subject"> 
+        <label for = "subject">Subject:</label> 
+        <input type = "text" id = "subject" placeholder="type here"/> 
+    </div>
+
+    <div class = "dueDateAfter">
+        <label for = "dueDateAfter"> Due Date After:</label>
+        <input type = "date" id= "dueDateAfter"/>
+
+    </div>
+
+    <div class = "status"> 
+        <label for = "status"> Status: </label>
+        <select id = "status">
+            <option value = ""> --Select Status--</option>
+            <option *ngFor = "let status of statuses" [value] = "status"> {{status}}</option>
+        </select>
+    </div>
+    
+    <button (click) = "searchTasks()"> Search</button>
+</div>
+
+
+<div class = "container">
+    <h2> Search Results: </h2>
+<table class = "table">
+    <thead>
+        <tr>
+            <th>Due Date</th>
+            <th>Subject</th>
+            <th>Assigned</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <button type = "click"> Click me!</button>
+    </tbody>
+</table>
+</div>
