@@ -1,14 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Task } from '../my-tasks/my-tasks.service';
 import { Observable } from 'rxjs';
 import { UserDTO } from '../user.service';
+import { SearchTaskDto } from '../my-tasks/my-tasks.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; 
+
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
@@ -17,10 +20,13 @@ tasks: Task[] = [];
 filteredTasks: Task[] = [];
 users: UserDTO[] = [];
 statuses: string[] = [];
+searchTaskDTO: any = {};
+
 
 private apiUrl = "http://localhost:8080/api/tasks";
 private apiUrlGetAllUsers = "http://localhost:8080/api/users";
 private apiUrlStatues = "http://localhost:8080/api/tasks/statuses";
+private apiUrlMultiFilterSearch = "http://localhost:8080/api/tasks/search";
 
 constructor(private http: HttpClient) {}
 
@@ -36,6 +42,7 @@ getAllTasks(): void {
     (data: Task[]) => {
       this.tasks = data;
       this.filteredTasks = data;
+      console.log("Tasks received:", data); // Logging received tasks
     },
     (error) => {
       console.error('Failed to fetch tasks', error);
@@ -66,7 +73,27 @@ getStatuses(): void {
 }
 
   searchTasks(): void {
-    // implement backend call
-  }
+    let params = new HttpParams();
+    for(let key in this.searchTaskDTO) {
+      if(this.searchTaskDTO.hasOwnProperty(key) && this.searchTaskDTO[key]) {
+        params = params.append(key, this.searchTaskDTO[key]);
+      }
+    }
 
+    console.log('Params sent:', params.toString()); 
+
+
+    this.http.get<Task[]>(`${this.apiUrlMultiFilterSearch}`, { params }).subscribe(
+    (data: Task[]) => {
+      this.filteredTasks = data;
+    },
+    (error) => {
+      console.error('Failed to fetch filtered tasks', error);
+    }
+    );
+    }
+
+    onTaskClick(task: Task): void {
+
+    }
 }

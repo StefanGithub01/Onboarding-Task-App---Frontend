@@ -7,7 +7,16 @@ export interface Task {
   dueDate: Date;
   subject: string;
   status: string;
- 
+  assigned: {
+    username: string;
+  }
+}
+
+export interface SearchTaskDto {
+  selectedUserId: string; 
+  subject: string; 
+  dueDateAfter: string; 
+  selectedStatus: string;
 }
 
 @Injectable({
