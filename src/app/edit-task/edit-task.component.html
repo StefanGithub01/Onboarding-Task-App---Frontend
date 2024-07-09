@@ -1,0 +1,46 @@
+<div class="container">
+    <div *ngIf="editingEnabled" class="form-group">
+        <label for="taskId">ID:</label>
+        <p id="taskId" class="form-control">{{ task.id }}</p>
+    </div>
+
+    <div class="form-group">
+        <label for="taskSubject">Subject:</label>
+        <input type="text" class="form-control" id="taskSubject" [(ngModel)]="task.subject" [disabled]="!editingEnabled">
+
+    </div>
+
+    <div class="form-group">
+        <label for="taskDueDate">Due Date:</label>
+        <input type="date" class="form-control" id="taskDueDate" [ngModel]="task.dueDate" (ngModelChange)="task.dueDate = $event" [disabled]="!editingEnabled">
+    </div>
+
+    <div class="form-group">
+        <label for="taskStatus">Status:</label>
+        <p *ngIf="!editingEnabled" class = "form-control">{{task.status}}</p>
+        <div *ngIf="editingEnabled" class="select-status">
+            <select id="status" [(ngModel)]="task.status" class="form-control" >
+                <option value="">-- Select Status --</option>
+                <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="taskAssigned">Assigned:</label>
+        <p *ngIf="!editingEnabled" id="taskAssigned" class = "form-control">{{ task.assigned?.username }}</p>
+        <div *ngIf="editingEnabled" class="select-user">
+            <select id="assignedTo" [ngModel]="task.assigned?.username"  class="form-control">
+                <option value="">-- Select User --</option>
+                <option *ngFor="let user of users" [value]="user.userName">{{ user.userName }}</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class = "button-container"> 
+        <button type="button" class="btn btn-primary" (click)="toggleEdit()">{{editingEnabled ? 'View': 'Edit'}}</button>
+        <button type="button" class="btn btn-primary" (click)="editTask()" [disabled]="!editingEnabled">Save Changes</button>
+        <button type="button" class="btn btn-primary" (click)="newTask()">New Task</button>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+
+.container {
+    background-color: #8a2be2; /* Purple background color */
+    color: #fff; /* White text color */
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    font-family: Arial, sans-serif; /* Specify a fallback font */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+p {
+    margin-top: 5px;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+   
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+.button-container {
+    text-align: right; /* Aligns buttons to the right */
+    margin-top: 10px; /* Adjust spacing between form elements and buttons */
+}

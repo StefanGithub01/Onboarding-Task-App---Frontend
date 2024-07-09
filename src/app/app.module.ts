@@ -1,19 +1,17 @@
-import { RouterModule } from '@angular/router'; // Import RouterModule
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { AppRoutingModule } from './app.routes'; // Update the import path
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { MainComponent } from './main/main.component';
-import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+
+import { AppRoutingModule } from './app.routes';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 @NgModule({
     declarations: [
+
         
-        // Add other components here
     ],
     imports: [
         RouterModule,

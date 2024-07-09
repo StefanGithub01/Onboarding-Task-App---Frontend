@@ -18,6 +18,7 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) {
     this.loginObj = new LoginRequest;
+    
   }
 
   onLogin() {
@@ -30,7 +31,6 @@ export class LoginComponent {
         console.log("Login SUCCESS: ", res);
         alert(res);
         localStorage.setItem('token', res);  
-        //localStorage.setItem('token', '1');  
         console.log('userId', res);
         this.router.navigateByUrl("main/my-tasks");
       },

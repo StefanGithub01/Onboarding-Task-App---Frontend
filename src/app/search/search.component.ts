@@ -1,12 +1,13 @@
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Task } from '../my-tasks/my-tasks.service';
+import { Task, TaskService } from '../services/my-tasks.service';
 import { Observable } from 'rxjs';
 import { UserDTO } from '../user.service';
-import { SearchTaskDto } from '../my-tasks/my-tasks.service';
+import { SearchTaskDto } from '../services/my-tasks.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -28,7 +29,7 @@ private apiUrlGetAllUsers = "http://localhost:8080/api/users";
 private apiUrlStatues = "http://localhost:8080/api/tasks/statuses";
 private apiUrlMultiFilterSearch = "http://localhost:8080/api/tasks/search";
 
-constructor(private http: HttpClient) {}
+constructor(private http: HttpClient, private router: Router) {}
 
 ngOnInit(): void {
   this.getAllTasks();
@@ -94,6 +95,6 @@ getStatuses(): void {
     }
 
     onTaskClick(task: Task): void {
-
+      this.router.navigate(['main/edit-task', task.id]);
     }
 }
