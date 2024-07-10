@@ -32,7 +32,7 @@
 
 
 <div class="container">
-    <h2>Search Results:</h2>
+    <h2 class = "title-text">Search Results:</h2>
     <table class="table">
         <thead>
             <tr>
@@ -47,7 +47,11 @@
             <tr *ngFor="let task of filteredTasks">
                 <td>{{ task.dueDate | date }}</td>
                 <td>{{ task.subject }}</td>
-                <td>{{task.status}}</td>
+                <td [ngClass]="{
+                    'new-status': task.status === 'NEW',
+                    'in-progress-status': task.status === 'IN_PROGRESS',
+                    'done-status': task.status === 'DONE'
+                  }">{{ task.status }}</td>
                 <td>{{ task.assigned.username }}</td>
                 <td>
                     <button class = "edit-task" (click)="onTaskClick(task)">Edit Panel</button>

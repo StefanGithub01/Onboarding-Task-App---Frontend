@@ -1,4 +1,6 @@
 <div class="container">
+
+    <h2 class="title-text"> Edit Task: </h2>
     <div *ngIf="editingEnabled" class="form-group">
         <label for="taskId">ID:</label>
         <p id="taskId" class="form-control">{{ task.id }}</p>
@@ -17,9 +19,13 @@
 
     <div class="form-group">
         <label for="taskStatus">Status:</label>
-        <p *ngIf="!editingEnabled" class = "form-control">{{task.status}}</p>
+        <p *ngIf="!editingEnabled" class="form-control" [ngClass]="{
+            'new-status': task.status === 'NEW',
+            'in-progress-status': task.status === 'IN_PROGRESS',
+            'done-status': task.status === 'DONE'
+        }">{{ task.status }}</p>
         <div *ngIf="editingEnabled" class="select-status">
-            <select id="status" [(ngModel)]="task.status" class="form-control" >
+            <select id="status" [(ngModel)]="task.status" class="form-control">
                 <option value="">-- Select Status --</option>
                 <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
             </select>

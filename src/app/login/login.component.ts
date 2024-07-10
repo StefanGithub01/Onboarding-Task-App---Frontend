@@ -29,7 +29,6 @@ export class LoginComponent {
     }).subscribe(
       (res: string) => {
         console.log("Login SUCCESS: ", res);
-        alert(res);
         localStorage.setItem('token', res);  
         console.log('userId', res);
         this.router.navigateByUrl("main/my-tasks");

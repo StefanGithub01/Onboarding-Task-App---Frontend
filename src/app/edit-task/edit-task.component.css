@@ -9,6 +9,15 @@
         font-family: Arial, sans-serif; /* Specify a fallback font */
     }
 
+    .title-text {
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.0);
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 1.85em;
+        text-align: center;
+    }
     .form-group {
         margin-bottom: 15px;
     }
@@ -46,4 +55,37 @@
     .button-container {
         text-align: right; /* Aligns buttons to the right */
         margin-top: 10px; /* Adjust spacing between form elements and buttons */
+    }
+
+    .new-status {
+        background-color: #17a2b8;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        font-weight: bold;
+        font-size: 1em;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .in-progress-status {
+        background-color: goldenrod;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1em;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .done-status {
+        background-color: #28a745;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1em;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
